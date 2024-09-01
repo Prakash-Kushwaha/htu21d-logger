@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>ESP32 Sensor Data</title>
     <script>
-        setInterval(function() {
+        setInterval(function () {
             fetch('http://your-server.com/get_sensor_data.php')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('temperature').innerText = data.temperature;
-                document.getElementById('humidity').innerText = data.humidity;
-            });
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('temperature').innerText = data.temperature;
+                    document.getElementById('humidity').innerText = data.humidity;
+                });
         }, 10000); // Fetch data every 10 seconds
     </script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Sensor Data</h1>
-    <p>Temperature: <span id="temperature"></span> °C</p>
-    <p>Humidity: <span id="humidity"></span> %</p>
+    <div class="flex-box-column">
+        <h1>HTU21D Humidity & Temperature Logger</h1>
+        <div class="data">
+            <h2>Sensor Data</h2>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Magnitude</th>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Temperature:</p>
+                    </td>
+                    <td>
+                        <p><span id="temperature"></span> °C</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Humidity:</p>
+                    </td>
+                    <td>
+                        <p><span id="humidity"></span> %</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </body>
+
 </html>
