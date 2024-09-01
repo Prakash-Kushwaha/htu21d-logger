@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ESP32 Sensor Data</title>
+    <script>
+        setInterval(function() {
+            fetch('http://your-server.com/get_sensor_data.php')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('temperature').innerText = data.temperature;
+                document.getElementById('humidity').innerText = data.humidity;
+            });
+        }, 10000); // Fetch data every 10 seconds
+    </script>
+</head>
+<body>
+    <h1>Sensor Data</h1>
+    <p>Temperature: <span id="temperature"></span> °C</p>
+    <p>Humidity: <span id="humidity"></span> %</p>
+</body>
+</html>
